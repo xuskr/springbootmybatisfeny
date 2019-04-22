@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--引入thymeleaf引擎-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+<table>
+    <tbody>
+    <tr>
+        <td>编号</td>
+        <td>姓名</td>
+        <td>密码</td>
+        <td>操作</td>
+    </tr>
+    <tr th:each="em:${list}">
+        <td th:text="${em.eid}"></td>
+        <td th:text="${em.ename}"></td>
+        <td th:text="${em.epwd}"></td>
+        <td>fd</td>
+    </tr>
+    <tr>
+        <td th:switch="${page}">
+            <p th:case="1"><a th:href="@{findAll(page=1)}">上一页</a></p>
+            <p th:case="*"><a th:href="@{findAll(page=${page}-1)}">上一页</a></p>
+        </td>
+        <td th:switch="${page}">
+            <p th:case="${pages}"><a th:href="@{findAll(page=${pages})}">下一页</a></p>
+            <p th:case="*"><a th:href="@{findAll(page=${page}+1)}">下一页</a></p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
